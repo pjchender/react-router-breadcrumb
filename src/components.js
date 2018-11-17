@@ -68,8 +68,12 @@ const Navbar = () => {
   );
 };
 
-const Breadcrumb = ({ locationPath }) => {
+const Breadcrumb = ({ locationPath, onMatchedRoutes }) => {
   let matchedRoutes = matchRoutes(routes, locationPath);
+
+  if (typeof onMatchedRoutes === 'function') {
+    matchedRoutes = onMatchedRoutes(matchedRoutes);
+  }
 
   return (
     <nav>

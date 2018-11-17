@@ -15,22 +15,26 @@ const Books = () => {
 };
 
 const Electronics = ({ route, location }) => {
-
-  // matchedRoutes = [
-  //   {
-  //     route: {
-  //       path: '/',
-  //       breadcrumbName: 'Home'
-  //     }
-  //   },
-  //   ...matchedRoutes
-  // ];
+  const onMatchedRoutes = (matchedRoutes) => {
+    return [
+      {
+        route: {
+          path: '/',
+          breadcrumbName: 'Home'
+        }
+      },
+      ...matchedRoutes
+    ];
+  };
 
   return (
     <div>
       <h1 className="py-3">Electronics</h1>
 
-      <Breadcrumb locationPath={location.pathname} />
+      <Breadcrumb
+        locationPath={location.pathname}
+        onMatchedRoutes={onMatchedRoutes}
+      />
 
       {renderRoutes(route.routes)}
     </div>
