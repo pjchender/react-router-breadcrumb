@@ -1,17 +1,41 @@
 import React from 'react';
-import { renderRoutes, matchRoutes } from 'react-router-config';
+import { renderRoutes } from 'react-router-config';
 import { Breadcrumb } from './components';
-import routes from './routes';
 
 /**
  * These are root pages
  */
-const Home = () => {
-  return <h1 className="py-3">Home</h1>;
+const Home = ({ location }) => {
+  return (
+    <div>
+      <h1 className="py-3">Home</h1>
+      <Breadcrumb locationPath={location.pathname} />
+    </div>
+  );
 };
 
-const Books = () => {
-  return <h1 className="py-3">Books</h1>;
+const Books = ({ location }) => {
+  const onMatchedRoutes = (matchedRoutes) => {
+    return [
+      {
+        route: {
+          path: '/',
+          breadcrumbName: 'Home'
+        }
+      },
+      ...matchedRoutes
+    ];
+  };
+
+  return (
+    <div>
+      <h1 className="py-3">Books</h1>
+      <Breadcrumb
+        locationPath={location.pathname}
+        onMatchedRoutes={onMatchedRoutes}
+      />
+    </div>
+  );
 };
 
 const Electronics = ({ route, location }) => {
