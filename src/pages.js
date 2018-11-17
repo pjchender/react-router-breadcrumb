@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 /**
  * These are root pages
@@ -12,7 +13,18 @@ const Books = () => {
 };
 
 const Electronics = () => {
-  return <h1 className="py-3">Electronics</h1>;
+  return (
+    <div>
+      <h1 className="py-3">Electronics</h1>
+
+      <Switch>
+        {/* The component will show here if the current URL matches the path */}
+        <Route path="/electronics/mobile" component={Mobile} />
+        <Route path="/electronics/desktop" component={Desktop} />
+        <Route path="/electronics/laptop" component={Laptop} />
+      </Switch>
+    </div>
+  );
 };
 
 /**

@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+import { Home, Books, Electronics } from './pages';
 
 class App extends Component {
   render() {
     return (
-      <h1 className="text-primary">
-        Hello React
-      </h1>
+      <div className="container">
+        {/* The corresponding component will show here if the current URL matches the path */}
+        <Route path="/" exact component={Home} />
+        <Route path="/books" component={Books} />
+        <Route path="/electronics" component={Electronics} />
+      </div>
     );
   }
 }
