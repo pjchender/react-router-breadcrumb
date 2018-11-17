@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
 
 /**
  * These are root pages
@@ -12,27 +12,12 @@ const Books = () => {
   return <h1 className="py-3">Books</h1>;
 };
 
-const Electronics = ({ routes }) => {
+const Electronics = ({ route }) => {
   return (
     <div>
       <h1 className="py-3">Electronics</h1>
 
-      <Switch>
-        {/* Refactor for using routes config */}
-        {routes.map((route, i) => {
-          const { path, exact, routes } = route;
-          return (
-            <Route
-              key={i}
-              path={path}
-              exact={exact}
-              render={(routeProps) => (
-                <route.component routes={routes} {...routeProps} />
-              )}
-            />
-          );
-        })}
-      </Switch>
+      {renderRoutes(route.routes)}
     </div>
   );
 };
