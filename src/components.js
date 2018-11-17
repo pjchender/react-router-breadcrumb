@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { matchRoutes } from 'react-router-config';
-import routes from './routes';
+import routes, { rootPath } from './routes';
 import logo from './logo.svg';
 
 const Navbar = () => {
@@ -26,19 +26,19 @@ const Navbar = () => {
       <div className="collapse navbar-collapse" id="navbarContent">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to={`${rootPath}/`}>
               Home
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/books">
+            <Link className="nav-link" to={`${rootPath}/books`}>
               Books
             </Link>
           </li>
           <li className="nav-item dropdown">
             <Link
               className="nav-link dropdown-toggle"
-              to="/electronics"
+              to={`${rootPath}/electronics`}
               id="navbarDropdownMenuLink"
               role="button"
               data-toggle="dropdown"
@@ -51,13 +51,22 @@ const Navbar = () => {
               className="dropdown-menu"
               aria-labelledby="navbarDropdownMenuLink"
             >
-              <Link className="dropdown-item" to="/electronics/mobile">
+              <Link
+                className="dropdown-item"
+                to={`${rootPath}/electronics/mobile`}
+              >
                 Mobile Phone
               </Link>
-              <Link className="dropdown-item" to="/electronics/desktop">
+              <Link
+                className="dropdown-item"
+                to={`${rootPath}/electronics/desktop`}
+              >
                 Desktop PC
               </Link>
-              <Link className="dropdown-item" to="/electronics/laptop">
+              <Link
+                className="dropdown-item"
+                to={`${rootPath}/electronics/laptop`}
+              >
                 Laptop
               </Link>
             </div>

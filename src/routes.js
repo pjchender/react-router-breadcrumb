@@ -1,34 +1,35 @@
 import { Home, Books, Electronics, Mobile, Desktop, Laptop } from './pages';
+const rootPath = process.env.PUBLIC_URL;
 
 const routes = [
   {
-    path: '/',
+    path: `${rootPath}/`,
     component: Home,
     exact: true,
     breadcrumbName: 'Home'
   },
   {
-    path: '/books',
+    path: `${rootPath}/books`,
     component: Books,
     breadcrumbName: 'Book'
   },
   {
-    path: '/electronics',
+    path: `${rootPath}/electronics`,
     component: Electronics,
     breadcrumbName: 'Electronics',
     routes: [
       {
-        path: '/electronics/mobile',
+        path: `${rootPath}/electronics/mobile`,
         component: Mobile,
         breadcrumbName: 'Mobile Phone'
       },
       {
-        path: '/electronics/desktop',
+        path: `${rootPath}/electronics/desktop`,
         component: Desktop,
         breadcrumbName: 'Desktop PC'
       },
       {
-        path: '/electronics/laptop',
+        path: `${rootPath}/electronics/laptop`,
         component: Laptop,
         breadcrumbName: 'Laptop'
       }
@@ -37,3 +38,4 @@ const routes = [
 ];
 
 export default routes;
+export { rootPath };

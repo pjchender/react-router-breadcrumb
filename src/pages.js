@@ -1,6 +1,7 @@
 import React from 'react';
 import { renderRoutes } from 'react-router-config';
 import { Breadcrumb } from './components';
+import { rootPath } from './routes';
 
 /**
  * These are root pages
@@ -19,7 +20,7 @@ const Books = ({ location }) => {
     return [
       {
         route: {
-          path: '/',
+          path: `${rootPath}/`,
           breadcrumbName: 'Home'
         }
       },
@@ -43,7 +44,7 @@ const Electronics = ({ route, location }) => {
     return [
       {
         route: {
-          path: '/',
+          path: `${rootPath}/`,
           breadcrumbName: 'Home'
         }
       },
