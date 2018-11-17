@@ -15,7 +15,18 @@ const Books = () => {
 };
 
 const Electronics = ({ route, location }) => {
-  const matchedRoutes = matchRoutes(routes, location.pathname);
+  // Customize breadcrumb through modifying matchRoutes array
+  let matchedRoutes = matchRoutes(routes, location.pathname);
+  matchedRoutes = [
+    {
+      route: {
+        path: '/',
+        breadcrumbName: 'Home'
+      }
+    },
+    ...matchedRoutes
+  ];
+
   return (
     <div>
       <h1 className="py-3">Electronics</h1>
