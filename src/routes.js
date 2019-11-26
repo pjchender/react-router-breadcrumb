@@ -11,7 +11,13 @@ const routes = [
   {
     path: `${rootPath}/books`,
     component: Books,
-    breadcrumbName: 'Book'
+    breadcrumbName: 'Book',
+    routes: [
+      {
+        path: `${rootPath}/books/:id`,
+        component: Books,
+      }
+    ]
   },
   {
     path: `${rootPath}/electronics`,

@@ -17,14 +17,32 @@ const Home = ({ location }) => {
 
 const Books = ({ location }) => {
   const onMatchedRoutes = (matchedRoutes) => {
+    const _matchedRoutes = matchedRoutes.map((matchedRoute) => {
+      if (matchedRoute.match && matchedRoute.match.path === '/books/:id') {
+        const bookId =
+          matchedRoute.match.params && matchedRoute.match.params.id;
+        // You can find book name by bookId here...
+        return {
+          match: matchedRoute.match,
+          route: {
+            ...matchedRoute.route,
+            path: matchedRoute.match.url,
+            breadcrumbName: bookId,
+          },
+        };
+      } else {
+        return matchedRoute;
+      }
+    });
+
     return [
       {
         route: {
           path: `${rootPath}/`,
-          breadcrumbName: 'Home'
-        }
+          breadcrumbName: 'Home',
+        },
       },
-      ...matchedRoutes
+      ..._matchedRoutes,
     ];
   };
 
@@ -45,10 +63,10 @@ const Electronics = ({ route, location }) => {
       {
         route: {
           path: `${rootPath}/`,
-          breadcrumbName: 'Home'
-        }
+          breadcrumbName: 'Home',
+        },
       },
-      ...matchedRoutes
+      ...matchedRoutes,
     ];
   };
 
